@@ -1,0 +1,1 @@
+Better website tampermoneky script
