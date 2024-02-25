@@ -9,17 +9,39 @@
 // @grant        none
 // ==/UserScript==
 
-(function() {
+(function () {
   'use strict';
-  const targetClassName = 'History_error__2pz9g';
+  function getScamNodeClassName() {
+    const elements = document.getElementsByTagName('div')
+    for (let i = 0; i < elements.length; i++) {
+      const element = elements[i];
+      const className = element.className
+      if (
+        className && className.startsWith('History_scam')
+      ) {
+        console.log(element.parentNode.parentNode.className)
+        return element.parentNode.parentNode.className
+      }
+    }
+  }
 
   function removeNodesWithClass(className) {
+    if (!className) return
     const elements = document.querySelectorAll(`.${className}`);
     elements.forEach(element => {
       element.remove();
     });
   }
 
+  let targetClassName = '';
+  const timer = setInterval(() => {
+    targetClassName = getScamNodeClassName();
+    if (targetClassName) {
+      targetClassName = targetClassName.split(" ")[1]
+      removeNodesWithClass(targetClassName)
+      clearInterval(timer);
+    }
+  }, 1000);
   const observer = new MutationObserver(mutations => {
     mutations.forEach(mutation => {
       mutation.addedNodes.forEach(addedNode => {
@@ -32,7 +54,7 @@
 
   const observerConfig = {
     childList: true,
-    subtree: true 
+    subtree: true
   };
 
   observer.observe(document.body, observerConfig);
