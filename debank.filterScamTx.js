@@ -19,7 +19,6 @@
       if (
         className && className.startsWith('History_scam')
       ) {
-        console.log(element.parentNode.parentNode.className)
         return element.parentNode.parentNode.className
       }
     }
