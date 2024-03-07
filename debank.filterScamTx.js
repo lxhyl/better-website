@@ -4,7 +4,7 @@
 // @version      0.1
 // @description  Remove scam tx from transactions list
 // @author       https://github.com/lxhyl
-// @match        https://debank.com/profile/*/history
+// @match        https://debank.com/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=debank.com
 // @grant        none
 // ==/UserScript==
