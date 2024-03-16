@@ -28,7 +28,7 @@
     if (!className) return
     const elements = document.querySelectorAll(`.${className}`);
     elements.forEach(element => {
-      element.remove();
+      element?.remove();
     });
   }
 
