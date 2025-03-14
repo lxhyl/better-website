@@ -17,9 +17,9 @@
       const element = elements[i];
       const className = element.className
       if (
-        className && className.startsWith('History_scam')
+        className && className.includes('History_error')
       ) {
-        return element.parentNode.parentNode.className
+        return className
       }
     }
   }
